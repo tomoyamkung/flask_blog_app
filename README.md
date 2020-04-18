@@ -29,3 +29,16 @@ Skipped 1 files
 ```
 
 isort の設定も pyproject.toml に登録する。
+
+## 文法チェック
+
+文法チェックは [Flake8](http://flake8.pycqa.org/en/latest/index.html "Flake8: Your Tool For Style Guide Enforcement — flake8 3..9 documentation") に従う。
+
+flake8 の実行方法は以下の通り：
+
+```sh
+$ pipenv run flake8
+./sample.py:22:1: W391 blank line at end of file
+```
+
+flake8 の設定は setup.cfg に記述する。
