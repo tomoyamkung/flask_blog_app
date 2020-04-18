@@ -42,3 +42,15 @@ $ pipenv run flake8
 ```
 
 flake8 の設定は setup.cfg に記述する。
+
+## typehint
+
+typehint のチェックツールとして mypy を採用する。  
+mypy の実行方法は以下の通り：
+
+```sh
+$ pipenv run mypy
+Success: no issues found in 1 source file
+```
+
+flake8 の設定も setup.cfg に登録する。
