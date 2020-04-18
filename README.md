@@ -11,10 +11,21 @@
 実行方法は以下の通り：
 
 ```sh
-$ pipenv run format
+$ pipenv run black
 All done! ✨ 🍰 ✨
 1 file left unchanged.
 ```
 
 black の設定は pyproject.toml に記述する。
 
+
+モジュールインポートの順序は [timothycrosley/isort](https://github.com/timothycrosley/isort "timothycrosley/isort: A Python utility / library to sort imports.") に従う。
+
+実行方法は以下の通り：
+
+```sh
+$ pipenv run isort
+Skipped 1 files
+```
+
+isort の設定も pyproject.toml に登録する。
