@@ -12,6 +12,7 @@ mypy = "*"
 [packages]
 flask = "*"
 pynamodb = "*"
+flask-login = "*"
 
 [requires]
 python_version = "3.8"

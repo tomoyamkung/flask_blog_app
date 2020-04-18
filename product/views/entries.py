@@ -1,8 +1,8 @@
 from datetime import datetime
 
 from flask import flash, redirect, render_template, request, url_for
-
 from flask_login import login_required
+
 from product import app
 from product.models.entries import Entry
 
