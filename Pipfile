@@ -10,6 +10,8 @@ flake8 = "*"
 mypy = "*"
 
 [packages]
+flask = "*"
+pynamodb = "*"
 
 [requires]
 python_version = "3.8"
