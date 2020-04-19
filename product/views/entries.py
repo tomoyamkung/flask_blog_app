@@ -16,11 +16,11 @@ def show_entries():
     return render_template("entries/index.html", entries=entries)
 
 
-@app.route("/entries", method=["POST"])
+@app.route("/entries", methods=["POST"])
 @login_required
 def add_entry():
     entry = Entry(
-        id=int(datetime.now.timestamp()), title=request.form["title"], text=request.form["text"]
+        id=int(datetime.now().timestamp()), title=request.form["title"], text=request.form["text"]
     )
     entry.save()
     flash("新しく記事が作成されました")
@@ -28,13 +28,13 @@ def add_entry():
     return redirect(url_for("show_entries"))
 
 
-@app.route("/entries/new", method=["GET"])
+@app.route("/entries/new", methods=["GET"])
 @login_required
 def new_entry():
     return render_template("entries/new.html")
 
 
-@app.route("/entries/<int:id>", method=["GET"])
+@app.route("/entries/<int:id>", methods=["GET"])
 @login_required
 def show_entry(id):
     entry = Entry.get(id)
@@ -42,7 +42,7 @@ def show_entry(id):
     return render_template("entries/show.html", entry=entry)
 
 
-@app.route("/entries/<int:id>/edit", method=["GET"])
+@app.route("/entries/<int:id>/edit", methods=["GET"])
 @login_required
 def edit_entry(id):
     entry = Entry.get(id)
@@ -50,7 +50,7 @@ def edit_entry(id):
     return render_template("entries/edit.html", entry=entry)
 
 
-@app.route("/entries/<int:id>/update", method=["POST"])
+@app.route("/entries/<int:id>/update", methods=["POST"])
 @login_required
 def update_entry():
     entry = Entry.get(id)
@@ -63,7 +63,7 @@ def update_entry():
     return redirect(url_for("show_entries"))
 
 
-@app.route("/entries/<int:id>/delete", method=["POST"])
+@app.route("/entries/<int:id>/delete", methods=["POST"])
 @login_required
 def delete_entry():
     entry = Entry.get(id)

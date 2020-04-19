@@ -5,7 +5,7 @@ from product import app
 from product.models.users import User
 
 
-@app.route("/login", method=["GET", "POST"])
+@app.route("/login", methods=["GET", "POST"])
 def login():
     if request.method == "POST":
         if request.form["username"] != app.config["USERNAME"]:
