@@ -1,0 +1,30 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+black = "*"
+isort = "*"
+flake8 = "*"
+mypy = "*"
+
+[packages]
+flask = "*"
+pynamodb = "*"
+flask-login = "*"
+flask-script = "*"
+
+[requires]
+python_version = "3.8"
+
+[pipenv]
+allow_prereleases = true
+
+[scripts]
+black = "black ."
+flake8 = "flake8 ."
+init_db = "python manage.py init_db"
+isort = "isort --apply"
+mypy = "mypy ."
+run_server = "python server.py"
