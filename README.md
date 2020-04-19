@@ -54,3 +54,60 @@ Success: no issues found in 1 source file
 ```
 
 flake8 の設定も setup.cfg に登録する。
+
+## データベース
+
+データベースには Amazon DynamoDB を使用する。開発時は開発用途で配布されている Docker イメージの DynamoDB ローカルを使用する。
+
+ここでは DynamoDB ローカルの操作について記す。
+
+### DynamoDB ローカルコンテナの起動と停止
+
+Docker イメージを入手する。コマンドは以下の通り。
+
+```sh
+$ docker pull amazon/dynamodb-local
+```
+
+name を "dynamodb" としてコンテナを起動するコマンドは以下の通り。
+
+```sh
+$ docker run -d --rm --name dynamodb -p 8000:8000 amazon/dynamodb-local
+```
+
+name を "dynamodb" として起動したコンテナを停止するコンテナは以下の通り。
+
+```sh
+$ docker stop dynamodb
+```
+
+DynamoDB ローカルへの操作は AWS CLI から行う。
+AWS CLI はローカルにインストールする。インストール手順は [macOS での AWS CLI バージョン 2 のインストール - AWS Command Line Interface](https://docs.aws.amazon.com/ja_jp/cli/latest/userguide/install-cliv2-mac.html "macOS での AWS CLI バージョン 2 のインストール - AWS Command Line Interface") を参照のこと。
+
+念のため、このプロジェクト用の AWS CLI プロファイルを作成した。プロファイル名は "local" とした。コマンドは以下の通り。
+
+```sh
+$ aws configure --profile local
+AWS Access Key ID [None]: access_key
+AWS Secret Access Key [None]: secret_access_key
+Default region name [None]: localhost:8000
+Default output format [None]:
+```
+
+起動した DynamoDB ローカルコンテナに対しての操作は `aws` から行うが、例えば `list-tables` を実行する場合のコマンドは以下の通り。
+
+```sh
+$ aws dynamodb list-tables --endpoint-url http://localhost:8000 --profile local
+{
+    "TableNames": []
+}
+```
+
+### テーブルの初期化
+
+テーブルを初期化するコマンドは以下の通り。
+
+```sh
+$ pipenv run init_db
+```
+
