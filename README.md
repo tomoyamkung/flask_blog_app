@@ -111,3 +111,9 @@ $ aws dynamodb list-tables --endpoint-url http://localhost:8000 --profile local
 $ pipenv run init_db
 ```
 
+## アプリケーション起動手順
+
+アプリケーションの起動手順は以下の通り。
+
+1. DynamoDB ローカルのコンテナを起動する：`$ aws dynamodb list-tables --endpoint-url http://localhost:8000 --profile local`
+2. アプリケーションを起動する：`$ pipenv run run_server`
